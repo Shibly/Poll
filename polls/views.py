@@ -1,5 +1,3 @@
-from django.http import HttpResponse
-from django.shortcuts import render
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
@@ -21,10 +19,6 @@ def detail(request, poll_id):
     return render(request, 'polls/detail.html', {'poll': poll})
 
 
-def results(request, poll_id):
-    return HttpResponse("You're looking at the results of poll %s." % poll_id)
-
-
 def vote(request, poll_id):
     p = get_object_or_404(Poll, pk=poll_id)
     try:
@@ -42,3 +36,8 @@ def vote(request, poll_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
+
+
+def results(request, poll_id):
+    poll = get_object_or_404(Poll, pk=poll_id)
+    return render(request, 'polls/results.html', {'poll': poll})
