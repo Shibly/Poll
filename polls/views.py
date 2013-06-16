@@ -18,6 +18,7 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Poll
+    # Tells django to use a specific template name instead of the auto generated default template name
     template_name = 'polls/detail.html'
 
 
