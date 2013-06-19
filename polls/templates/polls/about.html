@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "polls/index.html" %}
+{% block title %}About Polling App{% endblock %}
+{% block body %}
+    <p>
+        Online Polling app is a django powered polling application. With a admin panel, site administrator
+        can able to add any numbers of poll and corresponding multiple choice for the selected post.
+        From the front end, user can vote for a poll by selecting one choice answer. This is my 'warmup' app
+        written with django .
+    </p>
+{% endblock %}

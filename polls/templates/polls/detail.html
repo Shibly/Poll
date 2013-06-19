@@ -1,9 +1,13 @@
 {% extends "polls/index.html" %}
 {% block title %}Poll Detail {% endblock %}
 {% block body %}
-    <h1>{{ poll.question }}</h1>
+    <div class="alert alert-success">
+        <h2>{{ poll.question }}</h2>
+    </div>
     {% if error_message %}
-        <p><strong>{{ error_message }}</strong></p>
+        <div class="alert alert-error">
+            <p><strong>{{ error_message }}</strong></p>
+        </div>
     {% endif %}
     <form action="{% url 'polls:vote' poll.id %}" method="post">
         {% csrf_token %}

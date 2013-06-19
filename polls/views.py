@@ -30,6 +30,10 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
+class AboutView(generic.DetailView):
+    template_name = 'polls/about.html'
+
+
 def vote(request, poll_id):
     p = get_object_or_404(Poll, pk=poll_id)
     try:
