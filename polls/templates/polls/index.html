@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Latest Poll List</title>
-    {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.min.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap-responsive.min.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}"/>
+    <title>{% block title %}Latest Poll List{% endblock %}</title>
+    {% block stylesheets %}
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap-responsive.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}"/>
+    {% endblock %}
 </head>
+
 <body>
-{% if latest_poll_list %}
-    <ul>
-        {% for poll in latest_poll_list %}
-            <li>
-                <a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Currently No polls are available.</p>
-{% endif %}
+{% block body %}
+    {% if latest_poll_list %}
+        <ul>
+            {% for poll in latest_poll_list %}
+                <li>
+                    <a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Currently No polls are available.</p>
+    {% endif %}
+
+{% endblock %}
 </body>
 </html>
