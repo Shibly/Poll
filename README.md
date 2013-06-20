@@ -8,6 +8,8 @@ provide an interface to perform CRUID operation on the app.
 
 
 This app uses bootstrapped theme for the admin app. So you need to add it to the installed app. 
-Download it from PyPi with pip install django-admin-bootstrapped
+Download it from PyPi with 'pip install django-admin-bootstrapped'
+
 Add 'django_admin_bootstrapped' into the INSTALLED_APPS list before 'django.contrib.admin'
+
 You are done.
