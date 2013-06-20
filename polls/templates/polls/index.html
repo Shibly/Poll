@@ -17,9 +17,8 @@
         <ul class="nav nav-pills pull-right">
             <li class="active"><a href="{% url 'polls:index' %}">Home</a></li>
             <li><a href="{% url 'polls:about' %}">About</a></li>
-            <li><a href="#">Admin</a></li>
         </ul>
-        <h3 class="muted">Django Powered Poll App</h3>
+        <h3 class="muted">{% block header_title %}Poll App{% endblock %}</h3>
     </div>
     <hr>
     {% block body %}

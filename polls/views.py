@@ -30,8 +30,8 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
-class AboutView(generic.DetailView):
-    template_name = 'polls/about.html'
+def about(request):
+    return render(request, 'polls/about.html')
 
 
 def vote(request, poll_id):

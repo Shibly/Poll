@@ -1,10 +1,15 @@
 {% extends "polls/index.html" %}
-{% block title %}About Polling App{% endblock %}
+{% block title %}About Poll App{% endblock %}
 {% block body %}
+    <div class="alert alert-info about">
+        <h3 id="about">About poll app</h3>
+    </div>
     <p>
-        Online Polling app is a django powered polling application. With a admin panel, site administrator
-        can able to add any numbers of poll and corresponding multiple choice for the selected post.
-        From the front end, user can vote for a poll by selecting one choice answer. This is my 'warmup' app
-        written with django .
+        Online poll app is a django powered polling application influenced by Abu Ashraf Masnun's recent tutorial
+        and official tutorial from Django's site. The app does a fairly simple job :). User will select a poll , choose
+        an answer and vote it. An immediate result will be displayed just after the vote. The app uses django's builtin
+        admin
+        app and hook the poll app in it to provide an interface to perform CRUID operation on the app.
+
     </p>
 {% endblock %}
