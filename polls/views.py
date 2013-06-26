@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from polls.models import Choice, Poll
+from polls.models import Choice, Poll, ContactForm
 from django.views import generic
 from django.utils import timezone
 
@@ -54,3 +54,24 @@ def vote(request, poll_id):
 def results(request, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     return render(request, 'polls/results.html', {'poll': poll})
+
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            sender = form.cleaned_data['sender']
+            cc_myself = form.cleaned_data['cc_myself']
+            recipient = ['shibly.phy@gmail.com']
+            if cc_myself:
+                recipient.append(sender)
+            from django.core.mail import send_mail
+
+            send_mail(subject, message, sender, recipient)
+            return HttpResponseRedirect('/thanks/') # Redirect after post
+    else:
+        form = ContactForm()
+    return render(request, 'polls/contact.html', {'form': form})
+
