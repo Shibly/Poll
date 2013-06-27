@@ -6,7 +6,43 @@
     </div>
     <form action="/polls/contact/" method="post" class="form-vote"
           {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>{% csrf_token %}
-        {{ form.as_p }}
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper">
+            {% if form.subject.errors %}
+                <div class="alert alert-error">
+                    {{ form.subject.errors }}
+                </div>
+            {% endif %}
+            <label for="id_subject">Email subject:</label>
+            {{ form.subject }}
+        </div>
+        <div class="fieldWrapper">
+            {% if form.message.errors %}
+                <div class="alert alert-error">
+                    {{ form.message.errors }}
+                </div>
+            {% endif %}
+            <label for="id_message">Your message:</label>
+            {{ form.message }}
+        </div>
+        <div class="fieldWrapper">
+            {% if form.sender.errors %}
+                <div class="alert alert-error">
+                    {{ form.sender.errors }}
+                </div>
+            {% endif %}
+            <label for="id_sender">Your email address:</label>
+            {{ form.sender }}
+        </div>
+        <div class="fieldWrapper">
+            {% if form.cc_myself.errors %}
+                <div class="alert alert-error">
+                    {{ form.cc_myself.errors }}
+                </div>
+            {% endif %}
+            <label for="id_cc_myself">CC yourself?</label>
+            {{ form.cc_myself }}
+        </div>
         <input type="submit" class="btn btn-primary" value="Contact Us"/>
     </form>
 {% endblock %}

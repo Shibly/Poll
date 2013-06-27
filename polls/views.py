@@ -72,6 +72,8 @@ def contact(request):
             send_mail(subject, message, sender, recipient)
             return HttpResponseRedirect('/thanks/') # Redirect after post
     else:
-        form = ContactForm()
+
+        # Dynamic initial values.
+        form = ContactForm(initial={'sender': 'shibly.phy@gmail.com'})
     return render(request, 'polls/contact.html', {'form': form})
 
